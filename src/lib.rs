@@ -25,11 +25,8 @@ pub fn route_available() -> bool  {
     .expect("couldn't run command");
 
   let text = String::from_utf8_lossy(&out.stdout);
-
-  let matches = ROUTE_MATCHER.is_match(&text);
-  if !matches { println!("no match on: {} \n\n", text); }
-
-  matches
+  println!("route text: {} \n\n", text);
+  ROUTE_MATCHER.is_match(&text)
 }
 
 #[cfg(test)]
