@@ -26,7 +26,10 @@ pub fn route_available() -> bool  {
 
   let text = String::from_utf8_lossy(&out.stdout);
 
-  ROUTE_MATCHER.is_match(&text)
+  let matches = ROUTE_MATCHER.is_match(&text);
+  if !matches { println!("no match on: {}", text); }
+
+  matches
 }
 
 #[cfg(test)]
